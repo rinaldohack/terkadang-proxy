@@ -1,4 +1,7 @@
 <?php
+//$_SERVER['HTTP_HOST'] = "example.com";
+//$_SERVER['REQUEST_URI'] = '/sitemaps.xml.php';
+
 $context = stream_context_create(array(
     'http' => array(
         'method' => 'GET',
