@@ -1,10 +1,11 @@
 <?php
-
-$_SERVER['HTTP_HOST']='dojo.rinaldojonathan.id';
-
-$ch = curl_init('http://dojo.rinaldojonathan.id/'.$_SERVER['REQUEST_URI']);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Host: '.$_SERVER['HTTP_HOST']));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-echo curl_exec($ch);
-
+$context = stream_context_create(array(
+    'http' => array(
+        'method' => 'GET',
+        'header' => "Host: ".$_SERVER['HTTP_HOST']."\r\n" .
+                    "Cookie: foo=bar\r\n"
+    )
+));
+$data = file_get_contents("http://dojo.rinaldojonathan.id".$_SERVER['REQUEST_URI'], false, $context);
+echo $data;
 ?>
