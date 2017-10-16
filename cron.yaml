@@ -1,0 +1,5 @@
+cron:
+- description: keep instances active
+  url: /
+  target: default
+  schedule: every 1 mins
