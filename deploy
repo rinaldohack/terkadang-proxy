@@ -1,0 +1,4 @@
+gcloud beta config set project $1
+gcloud app deploy
+gcloud app deploy cron.yaml
+
